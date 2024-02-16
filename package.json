@@ -1,0 +1,14 @@
+{
+  "name": "address-service-js",
+  "description": "Core JS package to get addresses of USA",
+  "version": "0.0.2",
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hoppysoft-pvt/AddressServiceJs.git"
+  },
+  "dependencies": {
+    "address-service-js": "^0.0.2"
+  }
+}

@@ -1,1 +1,1 @@
-# AddressServiceJs
+# Core js package to get addresses of USA

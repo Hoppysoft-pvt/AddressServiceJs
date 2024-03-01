@@ -9,7 +9,7 @@ export default async function addressService(searchText = "") {
 
     if (luceneQuery) {
         let myHeaders = new Headers();
-        myHeaders.append("Authorization", "hs_l63fhj1fdtysx39j");
+        myHeaders.append("Authorization", "hs_2u37ib6w8wz4137f");
         myHeaders.append("Content-Type", "application/json");
 
         var requestOptions = {

@@ -1,14 +1,29 @@
 {
   "name": "address-service-js",
   "description": "Core JS package to get addresses of USA",
-  "version": "0.0.3",
-  "main": "index.js",
-  "type": "module",
+  "version": "0.0.9",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hoppysoft-pvt/AddressServiceJs.git"
   },
-  "dependencies": {
-    "address-service-js": "^0.0.3"
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/commonjs/index.js"
+    }
+  },
+  "main": "./dist/commonjs/index.js",
+  "module": "./dist/esm/index.js",
+  "scripts": {
+    "build:commonjs": "babel index.js -o dist/commonjs/index.js",
+    "build:esm": "babel index.js -o dist/esm/index.js --presets=@babel/preset-env --extensions '.js,.mjs'",
+    "build": "npm run build:commonjs && npm run build:esm"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-plugin-add-module-exports": "^1.0.2"
   }
 }

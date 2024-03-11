@@ -26,6 +26,8 @@ function _addressService() {
       firstWord,
       secondWord,
       luceneQuery,
+      modifiedStreetQuery,
+      _modifiedStreetQuery,
       myHeaders,
       requestOptions,
       res,
@@ -40,9 +42,11 @@ function _addressService() {
           }), _map2 = _slicedToArray(_map, 3), trimmedString = _map2[0], firstWord = _map2[1], secondWord = _map2[2];
           luceneQuery = "";
           if (!isNaN(firstWord)) {
-            luceneQuery = secondWord ? "number: ".concat(firstWord, " AND street: ").concat(secondWord) : "number: ".concat(firstWord);
+            modifiedStreetQuery = appendStarToWords(secondWord);
+            luceneQuery = secondWord ? "number: ".concat(firstWord, " AND street: ").concat(modifiedStreetQuery) : "number: ".concat(firstWord);
           } else {
-            luceneQuery = "street: ".concat(trimmedString);
+            _modifiedStreetQuery = appendStarToWords(trimmedString);
+            luceneQuery = "street: ".concat(_modifiedStreetQuery);
           }
           if (!luceneQuery) {
             _context.next = 25;
@@ -85,5 +89,20 @@ function _addressService() {
     }, _callee, null, [[9, 19]]);
   }));
   return _addressService.apply(this, arguments);
+}
+function appendStarToWords(str) {
+  var words = str.split(/\s+/);
+  var modifiedSentence = '';
+  for (var i = 0; i < words.length; i++) {
+    var word = words[i];
+    if (i > 0) {
+      modifiedSentence += ' ';
+    }
+    if (word.startsWith('*') || word.startsWith('?')) {
+      word = word.substring(1);
+    }
+    modifiedSentence += word + "*";
+  }
+  return modifiedSentence;
 }
 module.exports = exports.default;
